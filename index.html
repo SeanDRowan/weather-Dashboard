@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather-dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <header class="header">
+<h1>Weather-Dashboard</h1>
+    </header>
+</head>
+<body>
+    <main>
+        
+<div id="weather-box">
+<p id="citytext"></p>
+<p id="temptext"></p>
+<p id="windtext"></p>
+<p id="humidtext"></p>
+</div>
+    <div id="cardContainer">
+<div id="dayCard">
+    <ul class="daylist">
+        <li id="DayDate"></li>
+        <li id="Dayimg"></li>
+        <li id="DayTemp"></li>
+        <li id="DayWind"></li>
+        <li id="DayHumid"></li>
+    </ul>
+</div>
+</div>
+
+<div id="citySearch">
+    <h2>Search for a city</h2>
+    <input type="text" name="searchBar" size="30">
+    <button id="searchButton">Search</button>
+    <br>
+    <ul class="searchedCity">
+        <li><button class="btn">City 1</button></li>
+        <li><button class="btn">City 2</button></li>
+        <li><button class="btn">City 3</button></li>
+    </ul>
+    </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

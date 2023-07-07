@@ -1,0 +1,52 @@
+.main{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.header{
+    background-color: blue;
+}
+#weather-box{
+    background-color: aqua;
+    border: solid;
+    max-width: 600px;
+    min-width: 600px;
+    padding: 50px;
+    margin-left: auto ;
+    margin-right: auto;
+    max-width: 60%;
+    min-height: 200px;
+
+}
+#citySearch{
+    position: absolute;
+    display: grid;
+    top: 70px;
+    border: solid;
+    max-width: 300px; 
+    padding: 5px;
+    
+
+}
+.searchedCity{
+list-style: none;
+}
+.btn{
+    margin-bottom: 10px;
+}
+#cardContainer{
+    background-color: blueviolet;
+    border: solid;
+    max-width: 600px;
+    min-width: 600px;
+    padding: 50px;
+    max-width: 60%;
+    min-height: 200px;
+    margin-left: auto ;
+    margin-right: auto;
+    
+}
+.daylist{
+
+list-style: none;
+}
