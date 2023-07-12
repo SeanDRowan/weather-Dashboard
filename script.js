@@ -11,12 +11,10 @@ const searchBar =document.getElementById('searchBar')
 const searchedCity =document.getElementsByClassName('searchedCity')
 const weatherIcon =document.createElement('img')
 const forecastEls = document.querySelectorAll(".forecast");
-const forecastDateEl = document.createElement("p");
-const forecastWindEl = document.createElement("p");
+
 
 const forecastWeatherEl = document.createElement("img"); 
 const forecastHumidityEl = document.createElement("p");
-
 
 
 function nameToLatLon (savedName){
@@ -82,9 +80,10 @@ function parseApi(data){
         
        }
        
-       if (i== 8 || i== 16){
+       if (i== 8 || i== 16 || i ==24 || i ==32 || i ==39){
+        
         createForcast(i)
-        appendForcast(i)
+        
         }
         
     
@@ -99,42 +98,66 @@ function parseApi(data){
 
 
 function createForcast(i){
-     x = i
-    console.log(i)
-    forecastDateEl[i] = document.createElement("p");
-    forecastWindEl[i] = document.createElement("p");
-    forecastTempEl = document.createElement("p");
-    forecastWeatherEl[i] = document.createElement("img"); 
-    forecastHumidityEl[i] = document.createElement("p");
-   forecastTempEl.innerHTML = 'Temperture ' +temp
+   
+    console.log(i)  
+    const forecastWeatherEl = document.createElement("img");  
+    forecastWeatherEl.setAttribute('src','https://openweathermap.org/img/wn/'+ weather+'@2x.png')
+    var forecastTempEl = document.createElement("p")
+   var forecastDateEl = document.createElement("p");
+   var forecastWindEl = document.createElement("p");
+   var forecastHumidityEl = document.createElement("p");
    forecastDateEl.innerHTML =time
    forecastWindEl.innerHTML =  'Wind speed ' +wind
-   forecastWeatherEl.img = weatherIcon
-   forecastHumidityEl.innerHTML = 'Humidity '+ humid +'%'
+    forecastTempEl.innerHTML = 'Temperture ' +temp
+    forecastHumidityEl.innerHTML = 'Humidity '+ humid +'%'
+    console.log(forecastTempEl)
   
-  
+if ( i == 8 ){
+    forecastEls[0].append(forecastDateEl); 
+    forecastEls[0].append(forecastTempEl) 
+    forecastEls[0].append(forecastWeatherEl);
+    forecastEls[0].append(forecastWindEl);
+    forecastEls[0].append(forecastHumidityEl);
+    
+}
+if ( i== 16) {
+    forecastEls[1].append(forecastDateEl); 
+    forecastEls[1].append(forecastTempEl)
+    forecastEls[1].append(forecastWeatherEl);
+    forecastEls[1].append(forecastWindEl);
+    forecastEls[1].append(forecastHumidityEl); 
+}
+if ( i== 24) {
+    forecastEls[2].append(forecastDateEl); 
+    forecastEls[2].append(forecastTempEl)
+    forecastEls[2].append(forecastWeatherEl);
+    forecastEls[2].append(forecastWindEl);
+    forecastEls[2].append(forecastHumidityEl); 
+}
+if ( i== 32) {
+    forecastEls[3].append(forecastDateEl); 
+    forecastEls[3].append(forecastTempEl)
+    forecastEls[3].append(forecastWeatherEl);
+    forecastEls[3].append(forecastWindEl);
+    forecastEls[3].append(forecastHumidityEl); 
+}
+if ( i== 39) {
+    forecastEls[4].append(forecastDateEl); 
+    forecastEls[4].append(forecastTempEl)
+    forecastEls[4].append(forecastWeatherEl);
+    forecastEls[4].append(forecastWindEl);
+    forecastEls[4].append(forecastHumidityEl); 
+}
+    
+    
+    
    console.log(time)
  
     }
 
 
 
-
-
 function appendForcast(){
-    console.log(forecastTempEl)
-    for (i=0; i<forecastEls.length; i++) {
-        
-      
- forecastEls[i].append(forecastTempEl) 
-
- forecastEls[i].append(forecastDateEl);       
-
-forecastEls[i].append(forecastWindEl);
-forecastEls[i].append(forecastWeatherEl);
-forecastEls[i].append(forecastHumidityEl); 
-}
-
 
 }
 
@@ -143,13 +166,11 @@ function appendCitySearch(cityName){
 CitySave= document.createElement("button");
 CitySave.innerHTML= cityName
 citySearch.append(CitySave)
-localStorage.setItem('city','cityName')
+
 CitySave.addEventListener('click',searchSavedCity)
 }
- 
 function searchSavedCity(){
    var savedName = event.target.innerHTML
-
 nameToLatLon(savedName)
 }
 
