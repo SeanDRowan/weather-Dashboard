@@ -17,9 +17,9 @@ const forecastEls = document.querySelectorAll(".forecast");
 function nameToLatLon (savedName){
     var cityName = searchBar.value
  if (searchBar.value !=='')
-    { var request = 'http://api.openweathermap.org/geo/1.0/direct?q='+cityName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
+    { var request = 'https://api.openweathermap.org/geo/1.0/direct?q='+cityName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
  }
- else {var request = 'http://api.openweathermap.org/geo/1.0/direct?q='+savedName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
+ else {var request = 'https://api.openweathermap.org/geo/1.0/direct?q='+savedName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
  }   
     fetch(request)
     .then(function (response) {
