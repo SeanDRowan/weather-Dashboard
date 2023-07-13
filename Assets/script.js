@@ -88,7 +88,6 @@ function clearForcast(){
 for ( let i=0; forecastEls.length > i; i++){
     forecastEls[i].innerHTML=''
 }
-
 }
 function appendForecast(forecast,i){
     let x= i
