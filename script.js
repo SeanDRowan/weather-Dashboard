@@ -11,23 +11,15 @@ const searchBar =document.getElementById('searchBar')
 const searchedCity =document.getElementsByClassName('searchedCity')
 const weatherIcon =document.createElement('img')
 const forecastEls = document.querySelectorAll(".forecast");
-
-
-const forecastWeatherEl = document.createElement("img"); 
-const forecastHumidityEl = document.createElement("p");
-
-
+//
 function nameToLatLon (savedName){
     var cityName = searchBar.value
  if (searchBar.value)
     { var request = 'http://api.openweathermap.org/geo/1.0/direct?q='+cityName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
-    appendCitySearch(cityName) }
- else {var request = 'http://api.openweathermap.org/geo/1.0/direct?q='+savedName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
-
+    appendCitySearch(cityName) 
  }
-    console.log(cityName)
-    
-   
+ else {var request = 'http://api.openweathermap.org/geo/1.0/direct?q='+savedName+ '&appid=749f3025aff34829991e7168b6bd4f9a'
+ }   
     fetch(request)
     .then(function (response) {
       return response.json();
@@ -36,12 +28,9 @@ function nameToLatLon (savedName){
         for (var i= 0; i < data.length; i++){
          lat= (data[i].lat);
          lon = (data[i].lon); 
-         
          getApi() 
-    }}); 
-    
-}
-
+    }});}
+//
 function getApi(){
     console.log()
     requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat +'&lon='+ lon +'&units=imperial&appid=749f3025aff34829991e7168b6bd4f9a'
@@ -51,128 +40,82 @@ function getApi(){
         })
         .then(function (data) {
             console.log(data)
-            parseApi(data)
-          
-    });
-    
-}
-
-
+            parseApi(data) 
+            searchBar.value= ''  
+    });}
+    //
 function parseApi(data){
-    
-    for ( var i = 0;i<data.list.length;i++ ) {
-        
+   clearForcast()
+    for ( var i = 0;i<data.list.length;i++ ) { 
         city =data.city.name
-       time = data.list[i].dt_txt
+       time = data.list[i].dt_txt.substr(0,11)
        wind = data.list[i].wind.speed
        temp = data.list[i].main.temp
        humid = data.list[i].main.humidity
        weather = data.list[i].weather[0].icon
        weatherIcon.setAttribute('src','https://openweathermap.org/img/wn/'+ weather+'@2x.png')
-       
        if (i ==0 ){
         cityText.textContent= city
         tempText.textContent= 'Temperture ' +temp
         windText.textContent= 'Wind speed ' +wind
         humidText.textContent= 'Humidity '+ humid +'%'
-        currentDate.textContent=time
+        currentDate.textContent='('+time+')'
         weatherBox.appendChild(weatherIcon)
-        
        }
-       
        if (i== 8 || i== 16 || i ==24 || i ==32 || i ==39){
-        
         createForcast(i)
-        
-        }
-        
-    
-       }
-       
-    console.log(time)
-    console.log(wind)
-    console.log(temp)
-    console.log(humid)
-}
-
-
-
+         }}}
+//
 function createForcast(i){
-   
-    console.log(i)  
+    let x= i
     const forecastWeatherEl = document.createElement("img");  
     forecastWeatherEl.setAttribute('src','https://openweathermap.org/img/wn/'+ weather+'@2x.png')
     var forecastTempEl = document.createElement("p")
    var forecastDateEl = document.createElement("p");
    var forecastWindEl = document.createElement("p");
    var forecastHumidityEl = document.createElement("p");
-   forecastDateEl.innerHTML =time
+   forecastDateEl.innerHTML ='('+time+')'
    forecastWindEl.innerHTML =  'Wind speed ' +wind
     forecastTempEl.innerHTML = 'Temperture ' +temp
     forecastHumidityEl.innerHTML = 'Humidity '+ humid +'%'
-    console.log(forecastTempEl)
+    let forecast = {'date':forecastDateEl, 'wind': forecastWindEl,'temp': forecastTempEl,'humid':forecastHumidityEl,'weather':forecastWeatherEl}
+    console.log(i)
+    appendForecast(forecast,i)
   
-if ( i == 8 ){
-    forecastEls[0].append(forecastDateEl); 
-    forecastEls[0].append(forecastTempEl) 
-    forecastEls[0].append(forecastWeatherEl);
-    forecastEls[0].append(forecastWindEl);
-    forecastEls[0].append(forecastHumidityEl);
-    
 }
-if ( i== 16) {
-    forecastEls[1].append(forecastDateEl); 
-    forecastEls[1].append(forecastTempEl)
-    forecastEls[1].append(forecastWeatherEl);
-    forecastEls[1].append(forecastWindEl);
-    forecastEls[1].append(forecastHumidityEl); 
+//
+function clearForcast(){
+for ( let i=0; forecastEls.length > i; i++){
+    forecastEls[i].innerHTML=''
 }
-if ( i== 24) {
-    forecastEls[2].append(forecastDateEl); 
-    forecastEls[2].append(forecastTempEl)
-    forecastEls[2].append(forecastWeatherEl);
-    forecastEls[2].append(forecastWindEl);
-    forecastEls[2].append(forecastHumidityEl); 
+
 }
-if ( i== 32) {
-    forecastEls[3].append(forecastDateEl); 
-    forecastEls[3].append(forecastTempEl)
-    forecastEls[3].append(forecastWeatherEl);
-    forecastEls[3].append(forecastWindEl);
-    forecastEls[3].append(forecastHumidityEl); 
-}
-if ( i== 39) {
-    forecastEls[4].append(forecastDateEl); 
-    forecastEls[4].append(forecastTempEl)
-    forecastEls[4].append(forecastWeatherEl);
-    forecastEls[4].append(forecastWindEl);
-    forecastEls[4].append(forecastHumidityEl); 
-}
-    
-    
-    
-   console.log(time)
- 
+function appendForecast(forecast,i){
+    let x= i
+    console.log(i)
+    for ( let i=0; forecastEls.length > i; i++){
+       if ((i+1)*8==x || x==39){ console.log(x)
+        forecastEls[i].append(forecast.date); 
+        forecastEls[i].append(forecast.temp) 
+        forecastEls[i].append(forecast.weather);
+        forecastEls[i].append(forecast.wind);
+        forecastEls[i].append(forecast.humid);
+       }
     }
-
-
-
-function appendForcast(){
-
 }
-
+//
 function appendCitySearch(cityName){
     console.log(cityName)
 CitySave= document.createElement("button");
 CitySave.innerHTML= cityName
 citySearch.append(CitySave)
-
 CitySave.addEventListener('click',searchSavedCity)
 }
+//
 function searchSavedCity(){
    var savedName = event.target.innerHTML
 nameToLatLon(savedName)
 }
-
-
+//
 searchButton.addEventListener('click', nameToLatLon);
+

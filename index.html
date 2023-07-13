@@ -8,40 +8,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="style.css" />
     <header class="header">
-<h1>Weather-Dashboard</h1>
+<h1 class ='text-white'>Weather-Dashboard</h1>
     </header>
 </head>
 <body>
-    <main>
+    <main class="row-auto">
         
-<div id="weather-box">
+<div class= 'container mb-3  rounded 'id="weather-box">
 <p id="currentdate"></p>
-<p id="citytext">citytext</p>
-<p id="temptext"></p>
-<p id="windtext"></p>
-<p id="humidtext"></p>
+<p id="citytext">City</p>
+<p id="temptext">Temperature</p>
+<p id="windtext">Wind Speed</p>
+<p id="humidtext">Humidity</p>
 </div>
-    <div id="cardContainer">
 
-    <div class="dayCard">
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded p" id = 'day1'></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded p" id = 'day2'></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded p" id = 'day3' ></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded p" id = 'day4'></div>
-        <div class="col forecast bg-primary text-white ml-3 mb-3 rounded p" id = 'day5'></div>
+<div id = 'citySearch'class=" container text-center rounded row ml-3">
+    <h2>Search for a city</h2>
+    <input type="text" id="searchBar" name='search' size="30">
+    <button class="col-auto" id="searchButton">Search</button>
+    <br>
+    <div class="searchedCity btn">
+     
+    </div>
+    </div>
+    <div class="dayCard container text-center rounded">
+    <div class="row"> 
+        <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded" ></div>
+        <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded " ></div>
+        <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded " ></div>
+        <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded "></div>
+        <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded "></div>
         </div>
 
 </div>
-
-<div id="citySearch">
-    <h2>Search for a city</h2>
-    <input type="text" id="searchBar" name='search' size="30">
-    <button id="searchButton">Search</button>
-    <br>
-    <div class="searchedCity btn">
-        
-    </div>
-    </div>
 </main>
 <script src="script.js"></script>
 </body>
