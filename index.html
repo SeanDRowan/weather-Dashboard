@@ -6,32 +6,33 @@
     <title>weather-dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="/Assets/style.css" />
+    <link rel="stylesheet" href="Assets/style.css" />
     <header class="header">
 <h1 class ='text-white'>Weather-Dashboard</h1>
     </header>
 </head>
 <body>
     <main class="row-auto">
-<div class= 'container mb-3  rounded 'id="weather-box">
-<p id="currentdate"></p>
+<div class= 'container mb-3 text-white text-center'id="weather-box">
+    <div id="weather-box-elements" class="bg-primary ml-5 mr-5 rounded">
+<p id="currentdate"></p> 
 <p id="citytext">City</p>
 <p id="temptext">Temperature</p>
+<p id="icon"></p>
 <p id="windtext">Wind Speed</p>
 <p id="humidtext">Humidity</p>
+    </div>
 </div>
 
 <div id = 'citySearch'class=" container text-center rounded row ml-3">
     <h2>Search for a city</h2>
     <input type="text" id="searchBar" name='search' size="30">
-    <button class="col-auto" id="searchButton">Search</button>
+    <button class="rounded m-3 row-auto" id="searchButton">Search</button>
     <br>
-    <div class="searchedCity btn">
-     
-    </div>
-    </div>
+    
+</div>
     <div class="dayCard container text-center rounded">
-    <div class="row"> 
+    <div class="row container justify-content-center" > 
         <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded" ></div>
         <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded " ></div>
         <div class=" col-auto forecast bg-primary text-white ml-3 mb-3 rounded " ></div>
@@ -41,6 +42,6 @@
 
 </div>
 </main>
-<script src="/Assets/script.js"></script>
+<script src="Assets/script.js"></script>
 </body>
 </html>
