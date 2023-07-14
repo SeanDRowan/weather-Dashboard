@@ -29,15 +29,14 @@ function nameToLatLon (savedName){
 // if there is no data (user input a value that dosent return a city) set searchbar value to "", return.
         if (!data[0]){ searchBar.value="";
         return;} 
-//iterate through data to find lattiude and longitude of selected city, then call getApi.
-        for (var i= 0; i < data.length; i++){
-         lat= (data[i].lat);
-         lon = (data[i].lon); 
+//looks through data to find lattiude and longitude of selected city, then call getApi.
+         lat= (data[0].lat);
+         lon = (data[0].lon); 
          getApi()
 //if there is a city name in searchbar, call appendCitySearch and pass cityName
          if (cityName !==""){ 
          appendCitySearch(cityName)}
-    }});}
+    });}
 //Use lat and lon to request weather data, call parseApi, reset searchbar value.
 function getApi(){
     requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat +'&lon='+ lon +'&units=imperial&appid=749f3025aff34829991e7168b6bd4f9a'
