@@ -25,7 +25,7 @@ function nameToLatLon (savedName){
     .then(function (response) {
       return response.json();
     })
-    .then(function (data) {console.log(data)
+    .then(function (data) {
 // if there is no data (user input a value that dosent return a city) set searchbar value to "", return.
         if (!data[0]){ searchBar.value="";
         return;} 
@@ -46,7 +46,6 @@ function getApi(){
           return response.json();
         })
         .then(function (data) {
-            console.log(data)
             parseApi(data) 
             searchBar.value= ''  
     });}
@@ -95,7 +94,6 @@ for ( let i=0; forecastEls.length > i; i++){
 //sets i = x, then iterates through forcastels.length using math to match x data with proper forcast element (i0=x8,i1=x16,i2=x24,i3=x32).
 function appendForecast(forecast,i){
     let x= i
-    console.log(i)
     for ( let i=0; forecastEls.length > i; i++){
        if ((i+1)*8==x || x==39){ 
         forecastEls[i].append(forecast.date); 
